@@ -95,7 +95,7 @@ def stereo_calibrate(img1,img2,img_size,data1=None,data2=None,load1=False,load_n
         c2img=np.load(load_name2+'img.npy')
         c2obj=np.load(load_name2+'obj.npy')
     print c1img,'!',c2img    
-    retral,cameraMatrix1,distCoeffs1,cameraMatrix2,distCoeffs2,R,T,E,F=stereoCalibrate(c1obj,c1img,c2img,img_size,c1mtx,c1dist,c2mtx,c2dist,criteria=stereocalib_criteria, flags=flags)
+    retral,cameraMatrix1,distCoeffs1,cameraMatrix2,distCoeffs2,R,T,E,F=stereoCalibrate(c1obj,c1img,c2img,img_size,c1mtx,c1dist,c2mtx,c2dist)
     R1,R2,P1,P2,Q,t,tl=stereoRectify(cameraMatrix1,distCoeffs1,cameraMatrix2,distCoeffs2,img_size,R,T)
     newcameramtx,roi=getOptimalNewCameraMatrix(c1mtx,c1dist,img_size,1,img_size)
     #img1=undistort(img1,c1mtx,c1dist,None,newcameramtx)
